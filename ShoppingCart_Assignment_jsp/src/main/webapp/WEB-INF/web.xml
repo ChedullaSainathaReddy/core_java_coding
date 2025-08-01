@@ -1,0 +1,17 @@
+<servlet>
+    <servlet-name>AddToCartServlet</servlet-name>
+    <servlet-class>com.cookies.AddToCartServlet</servlet-class>
+</servlet>
+<servlet-mapping>
+    <servlet-name>AddToCartServlet</servlet-name>
+    <url-pattern>/add</url-pattern>
+</servlet-mapping>
+
+<servlet>
+    <servlet-name>ViewCartServlet</servlet-name>
+    <servlet-class>com.cookies.ViewCartServlet</servlet-class>
+</servlet>
+<servlet-mapping>
+    <servlet-name>ViewCartServlet</servlet-name>
+    <url-pattern>/viewcart</url-pattern>
+</servlet-mapping>
