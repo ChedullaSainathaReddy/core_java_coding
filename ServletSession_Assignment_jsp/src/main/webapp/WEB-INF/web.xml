@@ -1,0 +1,26 @@
+<servlet>
+	<servlet-name>LoginServlet</servlet-name>
+	<servlet-class>com.session.LoginServlet</servlet-class>
+</servlet>
+<servlet-mapping>
+	<servlet-name>LoginServlet</servlet-name>
+	<url-pattern>/login</url-pattern>
+</servlet-mapping>
+
+<servlet>
+	<servlet-name>BalanceServlet</servlet-name>
+	<servlet-class>com.session.BalanceServlet</servlet-class>
+</servlet>
+<servlet-mapping>
+	<servlet-name>BalanceServlet</servlet-name>
+	<url-pattern>/balance</url-pattern>
+</servlet-mapping>
+
+<servlet>
+	<servlet-name>LogoutServlet</servlet-name>
+	<servlet-class>com.session.LogoutServlet</servlet-class>
+</servlet>
+<servlet-mapping>
+	<servlet-name>LogoutServlet</servlet-name>
+	<url-pattern>/logout</url-pattern>
+</servlet-mapping>
