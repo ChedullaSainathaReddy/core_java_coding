@@ -1,0 +1,20 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<beans xmlns="http://www.springframework.org/schema/beans"
+	xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+	xsi:schemaLocation="
+       http://www.springframework.org/schema/beans http://www.springframework.org/schema/beans/spring-beans.xsd">
+	<bean id="cus1" class="com.vcube.SpringConstructorInjection.Customer">
+		<property name="cid" value="123"></property>
+		<property name="cname" value="Srinu"></property>
+		<property name="cage" value="23"></property>
+	</bean>
+	<bean id="cus2" class="com.vcube.SpringConstructorInjection.Customer">
+		<constructor-arg index="0" value="555" />
+		<constructor-arg index="1" value="Srikanth" />
+		<constructor-arg index="2" value="22" />
+	</bean>
+	<bean id="cus3" class="com.vcube.SpringConstructorInjection.Customer">
+		<constructor-arg value="555" type="int" />
+		<constructor-arg value="22" type="int" />
+	</bean>
+</beans>
