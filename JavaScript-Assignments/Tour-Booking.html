@@ -1,0 +1,71 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Tour Booking Form</title>
+</head>
+<body>
+  <h2>Tour Booking Form</h2>
+  
+  <form onsubmit="calculateBooking(event)">
+    <label for="fullName">Full Name:</label>
+    <input type="text" id="fullName" required><br><br>
+
+    <label for="email">Email:</label>
+    <input type="email" id="email" required><br><br>
+
+    <label for="destination">Destination:</label>
+    <select id="destination" required>
+      <option value="">Select</option>
+      <option value="Kerala">kerala</option>
+      <option value="waynad">waynad</option>
+      <option value="Pondicherry">Pondicherry</option>
+    </select><br><br>
+
+    <label for="days">Number of Days:</label>
+    <input type="number" id="days" min="1" required><br><br>
+
+    <label for="travelers">Number of Travelers:</label>
+    <input type="number" id="travelers" min="1" required><br><br>
+
+    <button type="submit">Book Now</button>
+  </form>
+
+  <h3>Booking Summary:</h3>
+  <div id="summary"></div>
+
+  <script>
+    function calculateBooking(event) {
+      event.preventDefault(); 
+
+      
+      let name = document.getElementById("fullName").value;
+      let email = document.getElementById("email").value;
+      let destination = document.getElementById("destination").value;
+      let days = parseInt(document.getElementById("days").value);
+      let travelers = parseInt(document.getElementById("travelers").value);
+
+      
+      let pricePerDay;
+      if (destination === "Ooty") pricePerDay = 2000;
+      else if (destination === "Goa") pricePerDay = 3000;
+      else if (destination === "Manali") pricePerDay = 4000;
+      else pricePerDay = 0;
+
+      
+      let totalPrice = pricePerDay * days * travelers;
+
+      
+      document.getElementById("summary").innerHTML = `
+        Name: ${name} <br>
+        Email: ${email} <br>
+        Destination: ${destination} <br>
+        Days: ${days} <br>
+        Travelers: ${travelers} <br>
+        Total Price: ₹${totalPrice}
+      `;
+    }
+  </script>
+</body>
+</html>

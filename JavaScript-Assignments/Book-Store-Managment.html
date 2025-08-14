@@ -1,0 +1,59 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>JSON – Book Store Management</title>
+</head>
+<body>
+<script>
+  
+  let books = [
+    { title: "Core Java", author: "James", price: 500, available: true },
+    { title: "python", author: "Naveen", price: 1000, available: false }
+  ];
+
+  
+  document.write("<b>All Books:</b><br>");
+  for (let book of books) {
+    document.write(
+      `Title: ${book.title}, Author: ${book.author}, Price: ${book.price} ₹, Available: ${book.available}<br>`
+    );
+  }
+  document.write("<br>");
+
+  
+  document.write("<b>Available Books:</b><br>");
+  for (let book of books) {
+    if (book.available) {
+      document.write(
+        `Title: ${book.title}, Author: ${book.author}, Price: ${book.price} ₹<br>`
+      );
+    }
+  }
+  document.write("<br>");
+
+  
+  books.push({ title: "SpringBoot", author: "Rahul", price: 600, available: true });
+  document.write("<b>After Adding:</b><br>");
+  document.write(books.map(b => b.title).join(", ") + "<br><br>");
+
+  
+  for (let book of books) {
+    if (book.title === "JavaScript Basics") {
+      book.price = 500;
+    }
+  }
+  document.write("<b>After Price Update:</b><br>");
+  for (let book of books) {
+    document.write(`${book.title} - ${book.price} ₹<br>`);
+  }
+  document.write("<br>");
+
+  
+  books = books.filter(book => book.title !== "JavaScript Basics");
+  document.write("<b>After Deletion:</b><br>");
+  document.write(books.map(b => b.title).join(", "));
+</script>
+</body>
+</html>
