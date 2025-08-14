@@ -1,0 +1,65 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Equality & Inequality Checker</title>
+</head>
+<body>
+<script>
+  
+  let val1 = prompt("Enter the first value:");
+  let val2 = prompt("Enter the second value:");
+
+
+  let type1 = typeof val1;
+  let type2 = typeof val2;
+
+  
+  let num1 = Number(val1);
+  let num2 = Number(val2);
+
+  
+  let eq = (val1 == val2);
+  let strictEq = (val1 === val2);
+  let neq = (val1 != val2);
+  let strictNeq = (val1 !== val2);
+
+  
+  function explainEquality(result, strict = false) {
+    if (strict) {
+      return result 
+        ? "true → Both value and type are exactly the same" 
+        : "false → Either value or type is different";
+    } else {
+      return result 
+        ? "true → Equality ignores type (performs type coercion)" 
+        : "false → Values not equal even after type coercion";
+    }
+  }
+
+  function explainInequality(result, strict = false) {
+    if (strict) {
+      return result 
+        ? "true → Strict inequality because either value or type differ" 
+        : "false → Both value and type are exactly the same";
+    } else {
+      return result 
+        ? "true → Values considered different after type coercion" 
+        : "false → Values considered equal after type coercion";
+    }
+  }
+
+  
+  alert(
+    `First Value: ${val1} (${type1})\n` +
+    `Second Value: ${val2} (${type2})\n\n` +
+    `Using == : ${eq} → ${explainEquality(eq, false)}\n` +
+    `Using === : ${strictEq} → ${explainEquality(strictEq, true)}\n` +
+    `Using != : ${neq} → ${explainInequality(neq, false)}\n` +
+    `Using !== : ${strictNeq} → ${explainInequality(strictNeq, true)}`
+  );
+
+</script>
+</body>
+</html>

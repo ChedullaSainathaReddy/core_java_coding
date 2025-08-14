@@ -1,0 +1,94 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Income Tax Calculator</title>
+</head>
+<body>
+  <h2>Income Tax Calculator</h2>
+
+  <label>Name: </label>
+  <input type="text" id="name"><br><br>
+
+  <label>PAN: </label>
+  <input type="text" id="pan"><br><br>
+
+  <label>Annual Income (₹): </label>
+  <input type="number" id="income"><br><br>
+
+  <button onclick="handleTax()">Calculate Tax</button>
+
+  <h3>Result:</h3>
+  <div id="result"></div>
+
+  <script>
+    
+    let taxRecords = [];
+
+    
+    function logToConsole(record) {
+      console.log("Tax Record:", record);
+    }
+
+    
+    function displayOnPage(record) {
+      document.getElementById("result").innerHTML = `
+        Name: ${record.name} <br>
+        PAN: ${record.pan} <br>
+        Annual Income: ₹${record.income} <br>
+        Tax Payable: ₹${record.tax}
+      `;
+    }
+
+    
+    function saveToRecords(record) {
+      taxRecords.push(record);
+      console.log("All Tax Records:", taxRecords);
+    }
+
+    
+    function calculateTax(name, pan, income, callback) {
+      let tax = 0;
+
+      
+      if (income <= 250000) {
+        tax = 0;
+      } else if (income <= 500000) {
+        tax = (income - 250000) * 0.05;
+      } else if (income <= 1000000) {
+        tax = (250000 * 0.05) + (income - 500000) * 0.2;
+      } else {
+        tax = (250000 * 0.05) + (500000 * 0.2) + (income - 1000000) * 0.3;
+      }
+
+      const record = {
+        name: name,
+        pan: pan,
+        income: income,
+        tax: tax.toFixed(2)
+      };
+
+      callback(record);
+    }
+
+    
+    function handleTax() {
+      const name = document.getElementById("name").value;
+      const pan = document.getElementById("pan").value;
+      const income = parseFloat(document.getElementById("income").value);
+
+      if (!name || !pan || isNaN(income)) {
+        alert("Please fill all fields correctly.");
+        return;
+      }
+
+      calculateTax(name, pan, income, function(record) {
+        logToConsole(record);
+        displayOnPage(record);
+        saveToRecords(record);
+      });
+    }
+  </script>
+</body>
+</html>
