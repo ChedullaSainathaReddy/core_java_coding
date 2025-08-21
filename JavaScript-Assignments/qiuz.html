@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Quiz Game</title>
+</head>
+<body>
+    <script>
+        // 1. Welcome the user
+        alert("Welcome to the Quiz Game!");
+
+        // 2. Ask the user's name
+        let userName = prompt("What is your name?");
+
+        // Handle empty input
+        if (!userName) {
+            userName = "Player";
+        }
+
+        // 3. Ask if they are ready
+        let isReady = confirm(userName + ", are you ready for the quiz?");
+
+        if (isReady) {
+            // 4. Ask a multiple-choice question
+            let answer = prompt(
+                "What is the capital of AndhraPradesh?\n" +
+                "A. Amaravathi\n" +
+                "B. Teleagana\n" +
+                "C. Chennai"
+            );
+
+            // 5. Check answer
+            if (answer && answer.trim().toLowerCase() === "b") {
+                alert("🎉 Correct! Well done, " + userName + "!");
+            } else {
+                alert("❌ Wrong answer. The correct answer is B. Paris.");
+            }
+        } else {
+            alert("Okay, " + userName + ". Come back when you’re ready!");
+        }
+    </script>
+</body>
+</html>

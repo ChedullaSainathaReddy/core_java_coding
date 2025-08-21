@@ -1,0 +1,120 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Share Market Portfolio Tracker</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            margin: 20px;
+            background: #f5f5f5;
+        }
+        h1 {
+            color: #333;
+        }
+        input, button {
+            margin: 5px 0;
+            padding: 8px;
+            font-size: 14px;
+        }
+        .container {
+            background: white;
+            padding: 15px;
+            border-radius: 8px;
+            box-shadow: 0 0 5px rgba(0,0,0,0.2);
+            max-width: 350px;
+        }
+        #output {
+            margin-top: 15px;
+            padding: 10px;
+            background: #fffbe6;
+            border: 1px solid #ddd;
+            border-radius: 6px;
+            font-family: monospace;
+            white-space: pre-line; /* Keep line breaks */
+        }
+    </style>
+</head>
+<body>
+
+<h1>Share Market Portfolio Tracker</h1>
+<div class="container">
+    <h3>Buy Shares</h3>
+    <input type="text" id="buyCompany" placeholder="Company Name"><br>
+    <input type="number" id="buyQuantity" placeholder="Quantity"><br>
+    <input type="number" id="buyPrice" placeholder="Price per Share"><br>
+    <button onclick="portfolio.buyShare(
+        document.getElementById('buyCompany').value,
+        parseInt(document.getElementById('buyQuantity').value),
+        parseFloat(document.getElementById('buyPrice').value)
+    )">Buy</button>
+
+    <h3>Sell Shares</h3>
+    <input type="text" id="sellCompany" placeholder="Company Name"><br>
+    <input type="number" id="sellQuantity" placeholder="Quantity"><br>
+    <button onclick="portfolio.sellShare(
+        document.getElementById('sellCompany').value,
+        parseInt(document.getElementById('sellQuantity').value)
+    )">Sell</button>
+
+    <h3>Portfolio</h3>
+    <button onclick="portfolio.totalValue()">Show Total Value</button>
+
+    <div id="output">Output will appear here...</div>
+</div>
+
+<script>
+function shareMarketPortfolio() {
+    let portfolio = []; // private data
+    let outputText = "";
+
+    function display(message) {
+        outputText += message + "\n";
+        document.getElementById("output").innerText = outputText;
+    }
+
+    function buyShare(company, quantity, pricePerShare) {
+        if (!company || quantity <= 0 || pricePerShare <= 0) {
+            display("Invalid buy details.");
+            return;
+        }
+        let existingShare = portfolio.find(share => share.company === company);
+        if (existingShare) {
+            existingShare.quantity += quantity;
+        } else {
+            portfolio.push({ company, quantity, pricePerShare });
+        }
+        display(Bought ${quantity} shares of ${company} at ₹${pricePerShare} each.);
+    }
+
+    function sellShare(company, quantity) {
+        let existingShare = portfolio.find(share => share.company === company);
+        if (!existingShare) {
+            display(You don't own any shares of ${company}.);
+            return;
+        }
+        if (quantity > existingShare.quantity) {
+            display(Not enough shares to sell. You own only ${existingShare.quantity}.);
+            return;
+        }
+        existingShare.quantity -= quantity;
+        display(Sold ${quantity} shares of ${company}.);
+        if (existingShare.quantity === 0) {
+            portfolio = portfolio.filter(share => share.company !== company);
+        }
+    }
+
+    function totalValue() {
+        let total = portfolio.reduce((sum, share) => sum + (share.quantity * share.pricePerShare), 0);
+        display(Portfolio Value: ₹${total});
+        return total;
+    }
+
+    return { buyShare, sellShare, totalValue };
+}
+
+// Create portfolio instance
+const portfolio = shareMarketPortfolio();
+</script>
+
+</body>
+</html>

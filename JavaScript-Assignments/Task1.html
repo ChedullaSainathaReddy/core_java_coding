@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>IIFE Product Inventory</title>
+</head>
+<body>
+<script>
+  
+  const productInventory = (function () {
+    let stock = 0; 
+
+    return {
+      getStock: function () {
+        return stock;
+      },
+      addStock: function (quantity) {
+        stock += quantity;
+        console.log(`Stock after adding: ${stock}`);
+      },
+      sell: function (quantity) {
+        if (quantity <= stock) {
+          stock -= quantity;
+          console.log(`Sold ${quantity} items.`);
+        } else {
+          console.log("Insufficient stock");
+        }
+      }
+    };
+  })();
+
+  
+  productInventory.addStock(500);  
+  productInventory.sell(367);      
+  console.log(`Stock remaining: ${productInventory.getStock()}`);
+</script>
+</body>
+</html>

@@ -1,0 +1,83 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>HTML5 Multimedia Lab</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            margin: 20px;
+        }
+        h1 {
+            margin-bottom: 5px;
+        }
+        section {
+            margin-bottom: 20px;
+        }
+        video, audio, embed, iframe, svg {
+            display: block;
+            margin-top: 5px;
+            border: 1px solid #ccc;
+            max-width: 100%;
+        }
+    </style>
+</head>
+<body>
+    <h1>HTML5 Multimedia Lab</h1>
+    <p>This page demonstrates video, audio, embed (PDF), iframe, and inline SVG. Below is a visual preview.</p>
+
+    <!-- Video -->
+    <section>
+        <h2>Video (sample.mp4)</h2>
+        <video controls poster="poster.jpg" width="640">
+            <source src="sample.mp4" type="video/mp4">
+            Your browser does not support the video tag.
+        </video>
+    </section>
+
+    <!-- Audio -->
+    <section>
+        <h2>Audio (sample.mp3)</h2>
+        <audio controls loop>
+            <source src="sample.mp3" type="audio/mpeg">
+            Your browser does not support the audio tag.
+        </audio>
+    </section>
+
+    <!-- PDF Embed -->
+    <section>
+        <h2>Embed (document.pdf)</h2>
+        <embed src="document.pdf" type="application/pdf" width="400" height="300">
+        <p>If not visible, <a href="document.pdf" download>download document.pdf</a></p>
+    </section>
+
+    <!-- Iframe -->
+    <section>
+        <h2>Iframe (demo.html)</h2>
+        <iframe src="demo.html" width="600" height="300" title="Embedded page preview"></iframe>
+    </section>
+
+    <!-- Inline SVG -->
+    <section>
+        <h2>Inline SVG</h2>
+        <svg width="100" height="100" xmlns="http://www.w3.org/2000/svg" role="img" aria-labelledby="svgTitle svgDesc">
+            <title id="svgTitle">Red Triangle Play Icon</title>
+            <desc id="svgDesc">A red triangular play button icon</desc>
+            <polygon points="20,10 80,50 20,90" fill="red" />
+        </svg>
+    </section>
+</body>
+</html>
+
+How it works:
+
+<video>: shows an MP4 video with a poster.jpg preview image and controls.
+
+<audio>: plays an MP3 file with looping enabled.
+
+<embed>: displays a PDF in the browser, with a link fallback.
+
+<iframe>: embeds another HTML page (demo.html).
+
+<svg>: draws an inline red triangle (play button).
