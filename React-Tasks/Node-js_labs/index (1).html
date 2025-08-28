@@ -1,0 +1,44 @@
+<!-- index.html -->
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>Courier Booking Form</title>
+</head>
+<body>
+  <h2>Courier Booking Form</h2>
+
+  <!-- The form tag is used to collect user input -->
+  <!-- action="/submit" means send data to server route "/submit" -->
+  <!-- method="POST" means data is sent securely (not shown in URL) -->
+  <form action="/submit" method="POST">
+
+    <!-- Tracking ID input box -->
+    <!-- name="trackingId" is the field name that server will use -->
+    <!-- value="C12345" means pre-filled data -->
+    <!-- required ensures the user must enter something -->
+    Tracking ID: <input type="text" name="trackingId" value="C12345" required><br><br>
+
+    <!-- Sender name field (already filled with Thanaya) -->
+    Sender Name: <input type="text" name="senderName" value="Thanaya" required><br><br>
+
+    <!-- Receiver name field (already filled with Devi) -->
+    Receiver Name: <input type="text" name="receiverName" value="Devi" required><br><br>
+
+    <!-- Pickup address field (already filled with Chennai) -->
+    Pickup Address: <input type="text" name="pickupAddress" value="Chennai" required><br><br>
+
+    <!-- Delivery address field (already filled with Bangalore) -->
+    Delivery Address: <input type="text" name="deliveryAddress" value="Bangalore" required><br><br>
+
+    <!-- Weight field -->
+    <!-- type="number" ensures user enters only numbers -->
+    <!-- required means cannot be empty -->
+    Weight (kg): <input type="number" name="weight" required><br><br>
+
+    <!-- Submit button -->
+    <!-- Clicking this sends form data to server -->
+    <input type="submit" value="Book Courier">
+  </form>
+</body>
+</html>
