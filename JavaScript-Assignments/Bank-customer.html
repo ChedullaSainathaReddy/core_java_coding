@@ -1,0 +1,60 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Bank Customers – Array Manipulation</title>
+</head>
+<body>
+<script>
+  
+  let numCustomers = parseInt(prompt("Enter the number of customers to register:"), 10);
+  if (isNaN(numCustomers) || numCustomers <= 0) {
+    alert("Invalid number of customers!");
+  } else {
+    
+    let customers = [];
+    for (let i = 0; i < numCustomers; i++) {
+      let name = prompt(`Enter name for customer ${i + 1}:`);
+      customers.push(name);
+    }
+
+    
+    document.write("Original Customers: " + customers.join(", ") + "<br><br>");
+
+    
+    document.write("Customers using for...of:<br>");
+    for (let name of customers) {
+      document.write(name + "<br>");
+    }
+    document.write("<br>");
+
+    
+    document.write("Customer IDs using for...in:<br>");
+    for (let id in customers) {
+      document.write(id + "<br>");
+    }
+    document.write("<br>");
+
+    
+    customers.push("Sainath");
+    document.write("After push('Sainath'): " + customers.join(", ") + "<br><br>");
+
+    
+    customers.pop();
+    document.write("After pop(): " + customers.join(", ") + "<br><br>");
+
+    
+    customers.splice(1, 0, "Rahul"); // Insert at index 1
+    document.write("After insert 'Vikram' at position 1: " + customers.join(", ") + "<br><br>");
+
+    
+    customers.splice(2, 1); // Delete at index 2
+    document.write("After delete at position 2: " + customers.join(", ") + "<br><br>");
+
+    
+    document.write("Final Customers: " + customers.join(", "));
+  }
+</script>
+</body>
+</html>

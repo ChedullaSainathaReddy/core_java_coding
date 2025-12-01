@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Switchboard Control</title>
+</head>
+<body>
+<script>
+  
+  const buildingName = "Navayuga";
+
+  
+  let status = "OFF";
+
+  
+  const devices = ["Light", "Fan", "AC"];
+
+  
+  var i;
+
+  
+  for (i = 0; i < devices.length; i++) {
+    
+    status = (status === "OFF") ? "ON" : "OFF";
+
+    
+    document.write(`Checking Switch ${i + 1}: ${devices[i]} is ${status}<br>`);
+  }
+
+  
+  document.write(`All switches checked for ${buildingName}.<br>`);
+  document.write(`Outside loop: var counter is ${i}<br>`);
+
+  
+  try {
+    buildingName = "Sunset Towers"; // ❌ Not allowed
+  } catch (err) {
+    console.error("Error:", err.message);
+  }
+</script>
+</body>
+</html>
